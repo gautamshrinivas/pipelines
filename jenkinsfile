@@ -1,0 +1,19 @@
+pipeline {
+   agent {label 'default'}
+    stages {
+        stage ('vcs') {
+            steps {
+                git url:'https://github.com/gautamshrinivas/pipelines.git',
+                branch:'main'
+        }
+        }
+        stage ('build') {
+            steps {
+                sh 'docker image build -t nopimage:1.0 -f ./nopcommerce-dockerfile .'
+                sh 'docker images'
+                sh 'docker container run -d --name nopcontainer -P nop-image:1.0'
+                sh 'docker container ls -a'
+        }
+        }
+    }
+}
