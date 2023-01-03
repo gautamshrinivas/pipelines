@@ -4,11 +4,11 @@ RUN mkdir /Nop
 RUN apt update && \
     apt install wget unzip -y && \
     cd /Nop && \
-    wget "https://github.com/nopSolutions/nopCommerce/releases/download/release-4.50.3/nopCommerce_4.50.3_NoSource_linux_x64.zip" &&\
-    unzip /Nop/nopCommerce_4.50.3_NoSource_linux_x64.zip && \
-    rm /Nop/nopCommerce_4.50.3_NoSource_linux_x64.zip
+    wget "https://github.com/nopSolutions/nopCommerce/releases/download/release-4.60.0/nopCommerce_4.60.0_NoSource_linux_x64.zip" &&\
+    unzip /Nop/nopCommerce_4.60.0_NoSource_linux_x64.zip && \
+    rm /Nop/nopCommerce_4.60.0_NoSource_linux_x64.zip
 
-FROM mcr.microsoft.com/dotnet/aspnet:6.0
+FROM mcr.microsoft.com/dotnet/aspnet:7.0
 COPY  --from=build /Nop /Nop
 WORKDIR /Nop
 EXPOSE 80

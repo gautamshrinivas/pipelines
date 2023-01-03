@@ -9,7 +9,7 @@ pipeline {
         }
         stage ('build') {
             steps {
-                sh 'chmod +x commands.sh'
+                sh 'chmod +x ./commands.sh'
                 sh './commands.sh'
         }
         }
